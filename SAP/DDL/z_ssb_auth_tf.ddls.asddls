@@ -9,7 +9,7 @@ returns
 {
   MANDT        : abap.clnt;
   fiori_id     : /ssb/fiori_id;
-  catalog_id   : char35;
+  catalog_id   : char100;
   tile_type    : /ssb/tile_type;
   semantic_obj : /ssb/semantic_object30;
   agr_name     : agr_name;

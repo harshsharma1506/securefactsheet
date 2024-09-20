@@ -1,43 +1,39 @@
-CLASS zcl_ssb_tf DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
-
+*&---------------------------------------------------------------------*
+*& Include          Z_SSB_CLS
+*&---------------------------------------------------------------------*
+CLASS lcl_file_play DEFINITION.
   PUBLIC SECTION.
-    INTERFACES: if_amdp_marker_hdb.
-    CLASS-METHODS: fetch_data FOR TABLE FUNCTION z_ssb_auth_tf.
-  PROTECTED SECTION.
+    METHODS: fetch_apps_ssb,
+      fetch_change_docs,
+      create_file_ssb IMPORTING
+                        p_ifile TYPE filename-fileintern,
+      create_file_cdhdr IMPORTING
+                          p_ifile1 TYPE filename-fileintern.
   PRIVATE SECTION.
+    METHODS: check_exists.
 ENDCLASS.
 
-CLASS zcl_ssb_tf IMPLEMENTATION.
-  METHOD fetch_data BY DATABASE FUNCTION FOR HDB LANGUAGE SQLSCRIPT
-                    OPTIONS READ-ONLY USING
-                                  /ssb/allapps
-                                  agr_buffi
-                                  agr_hiert.
-    lt_first  = select mandt,
-                      fiori_id,
-                     cast( catalog_id as varchar( 100 ) ) as catalog_id ,
-                      TYPE as tile_type,
-                      semantic_object as semantic_obj
-                      FROM "/SSB/ALLAPPS";
-
-     lt_final = SELECT a.* ,
-                       b.agr_name,
-                       c.text as role_text
-                       from :lt_first as a
-                       left outer join agr_buffi as b
-                       on a.catalog_id = b.url
-                       left outer join agr_hiert as c on b.agr_name = c.agr_name;
-     return select mandt,
-                   fiori_id,
-                   catalog_id,
-                   tile_type,
-                   semantic_obj,
-                   agr_name,
-                   role_text
-                   from :lt_final;
-  endmethod.
-
+CLASS lcl_file_play IMPLEMENTATION.
+  METHOD check_exists.
+  ENDMETHOD.
+  METHOD fetch_apps_ssb.
+    IF cl_abap_dbfeatures=>use_features(
+      EXPORTING
+        requested_features = VALUE #( ( cl_abap_dbfeatures=>amdp_table_function ) )        " List of requested features
+    ) IS NOT INITIAL.
+      SELECT * FROM z_ssb_auth_tf INTO TABLE @data(lt_ath).
+        IF sy-subrc = 0.
+          cl_demo_output=>display_data(
+            EXPORTING
+              value = lt_ath
+          ).
+        ENDIF.
+    ENDIF.
+  ENDMETHOD.
+  METHOD fetch_change_docs.
+  ENDMETHOD.
+  METHOD create_file_ssb.
+  ENDMETHOD.
+  METHOD create_file_cdhdr.
+  ENDMETHOD.
 ENDCLASS.

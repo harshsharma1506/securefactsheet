@@ -2,8 +2,6 @@
 
 A StreamLit Pythonic app getting CSV data and displaying dataframes
 
-[![Open the python app](  )
-
 ### How to run it on your own machine
 
 1. Install the requirements

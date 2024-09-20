@@ -1,8 +1,8 @@
-# 🎫 Support tickets template
+# SecureFactsheet consuming data from SAP
 
-A simple Streamlit app showing an internal tool that lets you create, manage, and visualize support tickets. 
+A StreamLit Pythonic app getting CSV data and displaying dataframes
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://support-tickets-template.streamlit.app/)
+[![Open the python app](  )
 
 ### How to run it on your own machine
 

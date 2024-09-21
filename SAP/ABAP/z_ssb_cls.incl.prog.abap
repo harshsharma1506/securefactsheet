@@ -17,6 +17,18 @@ CLASS lcl_file_play IMPLEMENTATION.
   METHOD check_exists.
   ENDMETHOD.
   METHOD fetch_apps_ssb.
+    IF cl_abap_dbfeatures=>use_features(
+      EXPORTING
+        requested_features = VALUE #( ( cl_abap_dbfeatures=>amdp_table_function ) )        " List of requested features
+    ) IS NOT INITIAL.
+      SELECT * FROM z_ssb_auth_tf INTO TABLE @data(lt_ath).
+        IF sy-subrc = 0.
+          cl_demo_output=>display_data(
+            EXPORTING
+              value = lt_ath
+          ).
+        ENDIF.
+    ENDIF.
   ENDMETHOD.
   METHOD fetch_change_docs.
   ENDMETHOD.

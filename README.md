@@ -41,6 +41,13 @@ in a corporate license didnt seem fair 😆.
 The default share point uploader can be used locally for both pages separately, but for now globally it's taking only one file, 
 as my requirement was that user will have access to either of that, and determination will be done via DB ( which I am not using here 😄 )
 
+### Tech used 
+
+- Python Modules ( listed in requirements.txt )
+- ABAP
+- AMDP
+- ABAP CDS
+
 ### How to run it on your own machine 🎰
 
 1. Install the requirements

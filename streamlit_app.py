@@ -5,11 +5,15 @@ st.title("🔒 SAP Secure SSB UI5 sheet")
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Matrix Sheet", "Change Log"])
 df = None
+def clean_data(content):
+    return content.decode('utf-8', errors='ignore')  # Skip invalid characters
 if page == "Matrix Sheet":
     st.header("Matrix File for tiles")
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
+        content = uploaded_file
+        clean_df = clean_data(content)
+        df = pd.read_csv(clean_df)
     st.write("Data from the CSV file:")
     if df is not None:
         st.dataframe(df)

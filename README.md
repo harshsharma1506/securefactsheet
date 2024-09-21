@@ -13,7 +13,32 @@ in a corporate license didnt seem fair 😆.
 2. Then I have uploaded one JIL file for Autosys job which will take the file from the AL11 folder and upload it to the sharepoint / network folder.
    
 3. Once the autosys job for transfer has finished, the file will be there in the sharepoint folder, so users have to visit our little python app , and login to that sharepoint , after that the file will be automatically used, if users don't login they can make use of the uploaders nonetheless.
-   
+
+### How things look and feel 🪄
+
+1. SAP File uploader
+
+<img width="607" alt="image" src="https://github.com/user-attachments/assets/3a4d9cd2-b73d-4c32-b17d-ae2280042c42">
+
+2. It does make the file in the AL11 path
+
+![image](https://github.com/user-attachments/assets/a6dcb4b0-fed2-430e-987b-8c3224c8066b)
+
+3. The python app -
+
+- Login page
+
+![image](https://github.com/user-attachments/assets/08c01fd0-36f7-465c-9809-df53fcc70719)
+
+- File uploader
+
+![image](https://github.com/user-attachments/assets/04bd8134-ceb5-43a0-94e1-ccf59b8c66b2)
+
+### Note 
+
+The default share point uploader can be used locally for both pages separately, but for now globally it's taking only one file, 
+as my requirement was that user will have access to either of that, and determination will be done via DB ( which I am not using here 😄 )
+
 ### How to run it on your own machine 🎰
 
 1. Install the requirements
